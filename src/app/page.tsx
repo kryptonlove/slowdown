@@ -1,27 +1,45 @@
-"use client";
+'use client';
 
 import Image from "next/image";
-import { ConnectButton } from "thirdweb/react";
-import thirdwebIcon from "@public/thirdweb.svg";
-import { client } from "./client";
+import { useActiveAccount } from "thirdweb/react";
+import diggleIcon from "@public/diggle-play.svg";
+import { LoginButton } from "./components/LoginButton";
+import Link from "next/link";
 
 export default function Home() {
+  const account = useActiveAccount();
+
   return (
     <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
-      <div className="py-20">
+        
+        <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 z-0">
+          <div className="flex flex-col h-[84px] w-full">
+            <div className="h-[12px] bg-rainbow-red" />
+            <div className="h-[12px] bg-rainbow-orange" />
+            <div className="h-[12px] bg-rainbow-yellow" />
+            <div className="h-[12px] bg-rainbow-green" />
+            <div className="h-[12px] bg-rainbow-cyan" />
+            <div className="h-[12px] bg-rainbow-blue" />
+            <div className="h-[12px] bg-rainbow-purple" />
+          </div>
+      </div>
+
+      <div className="w-full max-w-[400px] mx-auto border-4 border-rainbow-yellow rounded-3xl px-6 py-10 bg-black text-white text-center space-y-6 z-10">
         <Header />
-
         <div className="flex justify-center mb-20">
-          <ConnectButton
-            client={client}
-            appMetadata={{
-              name: "Example App",
-              url: "https://example.com",
-            }}
-          />
+          <LoginButton />
         </div>
-
-        <ThirdwebResources />
+        
+        {account && (
+          <div className="text-center">
+            <Link href="/gated-content">
+            <button className="mt-4 bg-zinc-100 text-black px-4 py-2 rounded-md uppercase">
+              Play
+            </button>
+            </Link>
+            <p className="text-xs py-2 uppercase">You are logged in</p>
+          </div> 
+        )}
       </div>
     </main>
   );
@@ -29,72 +47,22 @@ export default function Home() {
 
 function Header() {
   return (
-    <header className="flex flex-col items-center mb-20 md:mb-20">
-      <Image
-        src={thirdwebIcon}
-        alt=""
-        className="size-[150px] md:size-[150px]"
-        style={{
-          filter: "drop-shadow(0px 0px 24px #a726a9a8)",
-        }}
-      />
-
-      <h1 className="text-2xl md:text-6xl font-semibold md:font-bold tracking-tighter mb-6 text-zinc-100">
-        thirdweb SDK
-        <span className="text-zinc-300 inline-block mx-1"> + </span>
-        <span className="inline-block -skew-x-6 text-blue-500"> Next.js </span>
-      </h1>
-
-      <p className="text-zinc-300 text-base">
-        Read the{" "}
-        <code className="bg-zinc-800 text-zinc-300 px-2 rounded py-1 text-sm mx-1">
-          README.md
-        </code>{" "}
-        file to get started.
-      </p>
-    </header>
-  );
-}
-
-function ThirdwebResources() {
-  return (
-    <div className="grid gap-4 lg:grid-cols-3 justify-center">
-      <ArticleCard
-        title="thirdweb SDK Docs"
-        href="https://portal.thirdweb.com/typescript/v5"
-        description="thirdweb TypeScript SDK documentation"
-      />
-
-      <ArticleCard
-        title="Components and Hooks"
-        href="https://portal.thirdweb.com/typescript/v5/react"
-        description="Learn about the thirdweb React components and hooks in thirdweb SDK"
-      />
-
-      <ArticleCard
-        title="thirdweb Dashboard"
-        href="https://thirdweb.com/dashboard"
-        description="Deploy, configure, and manage your smart contracts from the dashboard."
-      />
-    </div>
-  );
-}
-
-function ArticleCard(props: {
-  title: string;
-  href: string;
-  description: string;
-}) {
-  return (
-    <a
-      href={props.href + "?utm_source=next-template"}
-      target="_blank"
-      className="flex flex-col border border-zinc-800 p-4 rounded-lg hover:bg-zinc-900 transition-colors hover:border-zinc-700"
-    >
-      <article>
-        <h2 className="text-lg font-semibold mb-2">{props.title}</h2>
-        <p className="text-sm text-zinc-400">{props.description}</p>
-      </article>
-    </a>
+      <header className="flex flex-col items-center mb-20 md:mb-20 max-w-[400px]">
+        <Image
+          src={diggleIcon}
+          alt=""
+          className="size-[150px] md:size-[150px]"
+          style={{
+            filter: "drop-shadow(0px 0px 24px #a726a9a8)",
+          }}
+        />
+        <h1 className="text-2xl md:text-6m font-semibold md:font-bold tracking-tighter mb-6 text-zinc-100">Slow Down Game</h1>
+        <p className="text-center">
+          Connect your wallet to claim <span className="text-rainbow-cyan">Shmiggle Pass on Base</span> and unlock <span className="text-rainbow-yellow">Slow Down</span> by Mr. Diggle and his frens.
+        </p>
+        <p className="text-xs py-8">
+          Some on-chain actions may apply
+        </p>
+      </header>
   );
 }

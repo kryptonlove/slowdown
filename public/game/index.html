@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Down</title>
+
+    <meta property="og:title" content="Slow Down — Relaxing Arcade Game" />
+    <meta property="og:description" content="Touch the screen to slow down. Catch stars, avoid enemies, earn points." />
+    <meta property="og:image" content="https://slowdown.diggle.fun/assets/preview.png" />
+    <meta property="og:url" content="https://slowdown.diggle.fun" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="startBackgroundCanvas"></canvas>
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen">
+            <!-- <img src="assets/diggle-2100.png" class="artwork" alt="Game artwork"> -->
+            <img src="assets/diggle-leslie.png" class="artwork" alt="Game artwork">
+            <audio id="backgroundMusic" loop>
+                <source src="assets/slowdown.mp3" type="audio/mpeg">
+            </audio>
+            <div class="highscore-label">
+                <div style="color:#00B872" id="walletAddressDisplay" class="wallet-address"></div>
+                <div class="highscore-title">HIGHSCORE</div>
+                <div class="highscore-value" id="startScreenHighScore">0</div>
+                <p>Total: <span style="color:aqua" id="startScreenTotalScore">0</span></p>
+
+            </div>
+            <div class="button-container">
+                <button class="start-button" onclick="startGame()">Play</button>
+                <button class="start-button" onclick="startTutorial()">How to play</button>
+                <button class="start-button music-button" onclick="toggleMusic()">Music OFF</button>
+                <button class="start-button" onclick="shareOnTwitter()">Share 𝕏</button>
+                <!-- <button class="start-button" onclick="openMoreGames()">More...</button> -->
+                <a href="https://diggle.fun" class="start-button">More games</a>
+                <!-- <a href="https://x.com/digglefun" class="start-button">Join X</a> -->
+
+            </div>
+        </div>
+        <!-- Game Screen -->
+        <div id="gameScreen" class="screen hidden">
+            <canvas id="gameCanvas"></canvas>
+            <div id="shieldBar"></div>
+            <div id="freezeBar" class="shield-bar"></div>
+            <button id="pauseButton">Pause</button>
+
+            <div id="score" class="score-number">0</div>
+            <div id="multiplier" class="score-multiplier">×1</div>
+            <div id="lives">Lives: 2</div>
+
+            <button id="resumeButton">Resume</button>
+            <button id="homeButton" onclick="goToStartScreen()">Home</button>
+            <div id="tutorialCenterText" class="tutorial-center-text"></div>
+            <div id="tutorialTextBox" class="tutorial-text-box"></div>
+        </div>
+        <!-- Game Over -->
+        <div id="gameOverScreen" class="screen hidden">
+            <div class="rules">
+                <h1>Game Over</h1>
+                <div class="score-info">
+                    <div>Current Score: <span id="currentScore">0</span></div>
+                    <div>High Score: <span id="highScore">0</span></div>
+                </div>
+                <div class="button-group">
+                    <button id="tryAgainButton" onclick="startGame()">TRY AGAIN</button>
+                    <button id="resumeButton" class="resume-button">Resume</button>
+                    <button id="gameOverHomeButton" onclick="goToStartScreen()">Home</button>
+                </div>
+            </div>
+        </div>
+        <!-- Tutorial Screen -->
+        <div id="tutorialScreen" class="screen hidden">
+            <canvas id="tutorialCanvas"></canvas>
+            <div id="tutorialText" class="tutorial-text"></div>
+        </div>
+    </div>
+
+    <script src="js/player.js"></script>
+    <script src="js/objects.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/tutorial.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
