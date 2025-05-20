@@ -44,5 +44,7 @@ const GameIframe = forwardRef<HTMLIFrameElement, React.IframeHTMLAttributes<HTML
   }
 );
 
+GameIframe.displayName = 'GameIframe';
+
 export default GameIframe;
 
