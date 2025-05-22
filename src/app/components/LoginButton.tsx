@@ -14,14 +14,11 @@ export const LoginButton = () => {
             doLogin: async (params) => {
                 await login(params);
             },
-            // getLoginPayload: async ({ address }) => {
-            //     if (typeof window !== 'undefined' && address) {
-            //       window.playerAddress = address;
-            //       console.log("Player address set:", window.playerAddress);
-            //     }
-            //     return await generatePayload({ address });
-            //   },              
-            getLoginPayload: async ({ address }) => generatePayload({address}),
+            getLoginPayload: async ({ address }) =>
+                generatePayload({
+                    address,
+                    chainId: 8453, // zerion bug fix
+                }),
 
             doLogout: async () => {
                 await logout();

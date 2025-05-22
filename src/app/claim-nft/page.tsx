@@ -5,12 +5,14 @@ import { LoginButton } from "../components/LoginButton"
 import { claimTo } from "thirdweb/extensions/erc1155"
 import { defineChain, getContract } from "thirdweb"
 import { base } from "thirdweb/chains";
-import { baseSepolia } from "thirdweb/chains";
 import { client } from "../client"
 import Link from "next/link"
+import { useRouter } from "next/navigation"; // used to redirect after claim NFT
+
 
 export default function NftClaim() {
     const account = useActiveAccount();
+    const router = useRouter(); // used to redirect after claim NFT
 
     return (
      <div>
@@ -24,16 +26,16 @@ export default function NftClaim() {
             transaction={() => claimTo({
                 contract: getContract({
                     client: client,
-                    chain: defineChain(baseSepolia),
-                    // address: "0xd559CcCEF096d5877ECA353aa2141F84E6487B5C" // Shmiggle Pass Space Flush address
-                    address:"0xf522A9AB4CD863684cF4c9Bd3141EcEA57156004"
+                    chain: defineChain(base),
+                    address: "0xd559CcCEF096d5877ECA353aa2141F84E6487B5C" // Shmiggle Pass
                 }),
                 to: account?.address || "",
                 quantity: 1n,
-                tokenId: 0n,
+                tokenId: 1n, // Slow Down Token
             })}
             onTransactionConfirmed={async () => {
                 alert("NFT claimed");
+                router.push("/"); // redirect to the main page
             }}
             >Claim NFT</TransactionButton>
             <Link href={"/gated-content"}>
