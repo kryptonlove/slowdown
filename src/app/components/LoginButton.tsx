@@ -9,10 +9,6 @@ export const LoginButton = () => {
     return (
         <ConnectButton
         client={client}
-        // accountAbstraction={{
-        //     chain: base,
-        //     sponsorGas:true
-        // }}
         auth={{
         isLoggedIn: async () => {
             try {

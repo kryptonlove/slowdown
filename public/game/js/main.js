@@ -234,8 +234,8 @@ function animateStartBackground() {
 // Start game
 function startGame() {
     // Reset game state
-    // player.angle = 0;
-    // player.direction = 1;
+    player.angle = 0;
+    player.direction = 1;
     player.isBlinking = false;
     player.hasShield = false;
     player.lives = 2;
@@ -247,6 +247,13 @@ function startGame() {
     shieldEndTime = 0;
     lastSpawnTime = Date.now(); // Initialize spawn time
     isPaused = false; // Reset pause state
+    
+    OBJECT_SPEED = BASE_OBJECT_SPEED;
+    SPAWN_INTERVAL = 1000;
+    MAX_OBJECTS = 10;
+    lastSpeedIncreaseTime = Date.now();
+    lastSpawnIntervalDecrease = Date.now();
+
 
     // backend
     console.log("🚀 Game started by address:", window.playerAddress || "❌ нет адреса");
