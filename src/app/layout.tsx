@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThirdwebProvider } from "thirdweb/react";
+import Script from 'next/script' // imported for analytic
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +37,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          defer
+          data-domain="slowdown.diggle.fun"
+          src="https://plausible.io/js/script.js"
+        />
+      </head>
       <body className={inter.className}>
         <ThirdwebProvider>{children}</ThirdwebProvider>
       </body>

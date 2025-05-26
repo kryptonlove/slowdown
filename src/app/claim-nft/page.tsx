@@ -17,8 +17,8 @@ export default function NftClaim() {
     return (
      <div>
         <div className="p-4 pb-10 min-h-[100vh] flex flex-col items-center justify-center container max-w-screen-lg mx-auto">
-            <p className="text-2xl">Claim NFT</p>
-            <p className="mt-4">Claim SHMIGGLE PASS NFT here to unlock the game</p>
+            <p className="text-2xl">Claim Game Pass</p>
+            <p className="mt-4 text-center">Claim SHMIGGLE PASS here to unlock the game. Calm Down, it takes around 20 seconds</p>
             <div className="my-6">
                 <LoginButton />
             </div>
@@ -34,8 +34,9 @@ export default function NftClaim() {
                 tokenId: 1n, // Slow Down Token
             })}
             onTransactionConfirmed={async () => {
+                await new Promise((r) => setTimeout(r, 3000)); // wait... 
                 alert("NFT claimed");
-                router.push("/"); // redirect to the main page
+                router.push("/gated-content"); // redirect to the game after claim
             }}
             >Claim NFT</TransactionButton>
             <Link href={"/gated-content"}>
