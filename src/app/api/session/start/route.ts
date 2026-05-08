@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
   // Находим игрока по wallet адресу
   const { data: player, error: playerError } = await supabase
-    .from('players')
+    .from('players_slowdown')
     .select('id')
     .eq('wallet_address', address)
     .single();
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Вставляем новую сессию
-  const { error: insertError } = await supabase.from('sessions').insert({
+  const { error: insertError } = await supabase.from('sessions_slowdown').insert({
     player_id: player.id,
     session_id: sessionId,
     start_time: new Date(startTime),

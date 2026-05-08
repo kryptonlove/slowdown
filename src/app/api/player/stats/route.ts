@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
   );
 
   const { data: player, error } = await supabase
-    .from('players')
+    .from('players_slowdown')
     .select('high_score, total_score')
     .eq('wallet_address', address)
     .single();

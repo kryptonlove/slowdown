@@ -33,7 +33,7 @@ export const LoginButton = () => {
             console.log("📦 Generating payload for:", address);
             return generatePayload({
                 address,
-                chainId: base.id,
+                chainId: base.id, // Base Mainnet 8453
             });
             } catch (err) {
             console.error("❌ getLoginPayload error:", err);

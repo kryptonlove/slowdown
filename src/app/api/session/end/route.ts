@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
   // Находим игрока
   const { data: player, error: playerError } = await supabase
-    .from('players')
+    .from('players_slowdown')
     .select('*') // нужно получить high_score, total_score, sessions_count
     .eq('wallet_address', address)
     .single();
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
   // Обновляем сессию по session ID
   const { error: updateError } = await supabase
-    .from('sessions')
+    .from('sessions_slowdown')
     .update({
       end_time: new Date(),
       duration: duration,
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
   }
 
   const { error: playerUpdateError } = await supabase
-    .from('players')
+    .from('players_slowdown')
     .update(updates)
     .eq('id', player.id);
 

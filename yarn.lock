@@ -943,6 +943,13 @@
   dependencies:
     "@tanstack/query-core" "5.74.4"
 
+"@thirdweb-dev/engine@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@thirdweb-dev/engine/-/engine-3.0.1.tgz#df4d1f201775d88c5f87283982187349047047e9"
+  integrity sha512-RlVwiqWC9n8pBO2dCMKoRxZ6llB3ojH0qydpyzLlqX4nBT/cfFxxzOz/V+BzuEvKIfv3DUozvkCKUBJ8A18fgg==
+  dependencies:
+    "@hey-api/client-fetch" "0.10.0"
+
 "@thirdweb-dev/insight@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@thirdweb-dev/insight/-/insight-1.0.0.tgz#a23d174ca27cbd0e19fb5162d8103b61b5fc62d3"
@@ -4694,10 +4701,10 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-thirdweb@^5:
-  version "5.97.0"
-  resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-5.97.0.tgz#869d263b017c9046559afe55e3498f0f52bf5dd3"
-  integrity sha512-8wOaoxth999Swl+Vh+P1w4Hl7giWCnvOvDUEk1o3VtZO0MisO1oy5hywl6WEGxL0u1muJVdZZ/XkeiE0sOUrLA==
+thirdweb@^5.101.1:
+  version "5.101.1"
+  resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-5.101.1.tgz#b3a7deaf1c154df62c6c7b8d316401fc40cc9189"
+  integrity sha512-pjXTIsS9j/U7HZSf8fdJTvkXAW/2advHjRS2unj0yWPL13WDysvZWMqa+OUAoLoqXPe8PKiaFzIUda6+msOc1A==
   dependencies:
     "@coinbase/wallet-sdk" "4.3.0"
     "@emotion/react" "11.14.0"
@@ -4710,6 +4717,7 @@ thirdweb@^5:
     "@radix-ui/react-icons" "1.3.2"
     "@radix-ui/react-tooltip" "1.2.3"
     "@tanstack/react-query" "5.74.4"
+    "@thirdweb-dev/engine" "3.0.1"
     "@thirdweb-dev/insight" "1.0.0"
     "@walletconnect/ethereum-provider" "2.20.1"
     "@walletconnect/sign-client" "2.20.1"
@@ -4725,6 +4733,7 @@ thirdweb@^5:
     toml "3.0.0"
     uqr "0.1.2"
     viem "2.28.1"
+    zod "3.25.24"
 
 thread-stream@^0.15.1:
   version "0.15.2"
@@ -5213,3 +5222,8 @@ zod@3.22.4:
   version "3.22.4"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.4.tgz#f31c3a9386f61b1f228af56faa9255e845cf3fff"
   integrity sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==
+
+zod@3.25.24:
+  version "3.25.24"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.25.24.tgz#581f952c8a99783734242a7ee7277210da862a11"
+  integrity sha512-E77RpEqxeBGBVbcK/5QKQsLM+3u6aN7pVgiGJENbwYfdsExPS/xyyUMfmeM3eY32LBCIjuzv6XU505sHn2t+Kw==

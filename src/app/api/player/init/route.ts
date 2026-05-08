@@ -26,13 +26,13 @@ export async function POST(req: NextRequest) {
   console.log("INIT: address from JWT inside POST:", address);
 
   const { data: existingPlayer } = await supabase
-    .from("players")
+    .from("players_slowdown")
     .select("*")
     .eq("wallet_address", address)
     .single();
 
   if (!existingPlayer) {
-    await supabase.from("players").insert({
+    await supabase.from("players_slowdown").insert({
       wallet_address: address,
       high_score: 0,
       total_score: 0,
